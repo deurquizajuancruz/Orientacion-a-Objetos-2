@@ -37,6 +37,7 @@ public class Usuario {
 	}
 	
 	public void eliminarTweets() {
+		this.tweets.forEach(x -> x.eliminar());
 		this.tweets.clear();
 	}
 	

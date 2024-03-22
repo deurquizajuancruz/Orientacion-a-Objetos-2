@@ -8,6 +8,12 @@ public class Retweet implements Publicacion{
 	}
 
 	public String getContenido() {
+		if (this.origen == null)
+			return "Publicacion inexistente";
 		return this.origen.getContenido();
+	}
+	
+	public void eliminar() {
+		this.origen= null;
 	}
 }

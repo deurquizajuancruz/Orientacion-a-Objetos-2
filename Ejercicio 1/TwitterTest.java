@@ -41,4 +41,30 @@ public class TwitterTest {
 		assertEquals(0,this.t.getUsuarios().size());
 		assertNull(this.t.eliminarUsuario(new Usuario("Aang")));
 	}
+	
+	@Test
+	public void testRetweetEliminado() {
+		Usuario u1 = new Usuario("Frank");
+		Usuario u2 = new Usuario("Felipao");
+		this.t.registrarUsuario(u1);
+		this.t.registrarUsuario(u2);
+		Tweet t1 = u1.twittear("Hola, estoy probando");
+		Retweet r = u2.retwittear(t1);
+		assertNotNull(this.t.eliminarUsuario(u1));
+		assertEquals("Publicacion inexistente", r.getContenido());
+	}
+	
+	@Test
+	public void testRetweetsEliminados() {
+		Usuario u1 = new Usuario("Frank Sinatra");
+		Usuario u2 = new Usuario("Faxparax");
+		this.t.registrarUsuario(u1);
+		this.t.registrarUsuario(u2);
+		Tweet primero = u1.twittear("Lo tengo que pedir");
+		Retweet r1 = u2.retwittear(primero);
+		Retweet r2 = u1.retwittear(r1); // retweet del retweet
+		assertEquals("Lo tengo que pedir", r2.getContenido());
+		this.t.eliminarUsuario(u1);
+		assertEquals("Publicacion inexistente", r1.getContenido());
+	}
 }
