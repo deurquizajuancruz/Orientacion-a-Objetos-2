@@ -8,12 +8,10 @@ public class Tweet implements Publicacion{
 	}
 	
 	public String getContenido() {
-		if (this.contenido == null)
-			return "Publicacion inexistente";
 		return this.contenido;
 	}
-	
-	public void eliminar() {
-		this.contenido = null;
+
+	public boolean esRetweet() {
+		return false;
 	}
 }

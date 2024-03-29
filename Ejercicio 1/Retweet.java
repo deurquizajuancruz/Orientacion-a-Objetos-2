@@ -8,12 +8,14 @@ public class Retweet implements Publicacion{
 	}
 
 	public String getContenido() {
-		if (this.origen == null)
-			return "Publicacion inexistente";
 		return this.origen.getContenido();
 	}
+
+	public boolean esRetweet() {
+		return true;
+	}
 	
-	public void eliminar() {
-		this.origen= null;
+	public boolean esRetweetDe(Publicacion t) {
+		return this.origen == t; 
 	}
 }

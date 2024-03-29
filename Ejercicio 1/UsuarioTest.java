@@ -16,33 +16,31 @@ public class UsuarioTest {
 	
 	@Test
 	public void testTwittear() {
-		assertNull(u1.twittear(""));
-		assertNotNull(u2.twittear("Twitteando"));
-		assertEquals(1, u2.getTweets().size());
-		assertEquals("Twitteando", u2.getTweets().get(0).getContenido());
+		assertNull(this.u1.twittear(""));
+		assertNull(this.u2.twittear("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+		assertNotNull(this.u1.twittear("Holas q onda"));
+		assertEquals(1, this.u1.getTweets().size());
 	}
 	
 	@Test
 	public void testRetwittear() {
-		assertNull(u2.retwittear(null));
-		assertNotNull(u2.retwittear(new Tweet("Twitter ahora se llama X")));
-		Tweet t1 = new Tweet("Hola Mundo!");
-		assertEquals("Hola Mundo!", u1.retwittear(t1).getContenido());
-		Tweet t2 = u1.twittear("Segundo tweet");
-		assertEquals(2, u1.getTweets().size());
-		Retweet r = u2.retwittear(t2);
-		assertEquals("Segundo tweet", u1.retwittear(r).getContenido());
+		Tweet t1 = this.u1.twittear("Twitteando");
+		Retweet r = this.u2.retwittear(t1);
+		assertEquals(1, this.u2.getTweets().size());
+		assertEquals("Twitteando", r.getContenido());
 	}
 	
 	@Test
-	public void testEliminarTweets() {
-		u1.twittear("Probando");
-		Tweet t1 = new Tweet("Que onda");
-		Retweet r1 = new Retweet(t1);
-		u1.retwittear(r1);
-		assertEquals(2, u1.getTweets().size());
-		u1.eliminarTweets();
-		assertEquals(0, u1.getTweets().size());
-		assertEquals("Que onda", r1.getContenido());
+	public void testTieneTweet() {
+		Tweet t1 = this.u1.twittear("Soy el 1");
+		assertTrue(this.u1.tieneTweet(t1));
+		assertFalse(this.u2.tieneTweet(t1));
+	}
+	
+	@Test
+	public void testEliminarTweet() {
+		Tweet t1 = this.u2.twittear("Voy a borrar esto");
+		this.u2.eliminarTweet(t1);
+		assertEquals(0, this.u2.getTweets().size());
 	}
 }

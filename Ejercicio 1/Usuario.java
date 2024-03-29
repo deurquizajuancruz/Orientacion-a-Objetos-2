@@ -15,10 +15,6 @@ public class Usuario {
 	public String getScreenName() {
 		return screenName;
 	}
-
-	public void setScreenName(String screenName) {
-		this.screenName = screenName;
-	}
 	
 	public Tweet twittear (String contenido) {
 		if (contenido.length() < 1 || contenido.length() > 280)
@@ -29,16 +25,17 @@ public class Usuario {
 	}
 	
 	public Retweet retwittear(Publicacion origen) {
-		if (origen == null)
-			return null;
 		Retweet r = new Retweet(origen);
 		this.tweets.add(r);
 		return r;
 	}
 	
-	public void eliminarTweets() {
-		this.tweets.forEach(x -> x.eliminar());
-		this.tweets.clear();
+	public boolean tieneTweet(Publicacion t) {
+		return this.tweets.contains(t);
+	}
+	
+	public void eliminarTweet(Publicacion t) {
+		this.tweets.remove(t);
 	}
 	
 	public List<Publicacion> getTweets() {
