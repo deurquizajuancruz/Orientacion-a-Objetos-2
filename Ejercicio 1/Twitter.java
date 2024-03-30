@@ -32,11 +32,11 @@ public class Twitter {
 		return this.usuarios;
 	}
 	
-	// NO FUNCIONAN POR ERROR:
 	public boolean eliminarUsuario(Usuario u) {
 		if ( ! existeUsuario(u.getScreenName()))
 			return false;
-		u.getTweets().forEach(p -> this.eliminarTweet(p)); // borro todos los tweets del usuario
+		List<Publicacion> pp = new ArrayList<Publicacion>(u.getTweets());
+		pp.forEach(p -> this.eliminarTweet(p)); // borro todos los tweets del usuario
 		this.usuarios.remove(u);
 		return true;
 	}
