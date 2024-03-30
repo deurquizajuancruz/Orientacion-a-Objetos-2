@@ -3,6 +3,30 @@ package ejercicio2b;
 public class Papel extends Elemento{
 
 	public Papel() {
-		super("Papel", new String[]{"Tijera", "Lagarto"}, new String[]{"Piedra", "Spock"});
 	}
+
+	public String jugarContra(Elemento otroElemento) {
+		return otroElemento.jugarContraPapel();
+	}
+
+	protected String jugarContraPiedra() {
+		return "Gana papel";
+	}
+
+	protected String jugarContraPapel() {
+		return "Empate";
+	}
+
+	protected String jugarContraTijera() {
+		return "Gana tijera";
+	}
+
+	protected String jugarContraSpock() {
+		return "Gana papel";
+	}
+
+	protected String jugarContraLagarto() {
+		return "Gana lagarto";
+	}
+	
 }

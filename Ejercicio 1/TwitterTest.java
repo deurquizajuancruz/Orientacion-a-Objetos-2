@@ -26,14 +26,13 @@ public class TwitterTest {
 		Usuario u1 = this.t.registrarUsuario("Kanye West");
 		Usuario u2 = this.t.registrarUsuario("Kendrick Lamar");
 		Tweet tweetKanye = u1.twittear("I hate being bipolar");
-		Tweet tweetKendrick = u2.twittear("All the stars");
-		assertEquals(1, u1.getTweets().size());
+		u2.twittear("All the stars");
 		Retweet retweetKendrick = u2.retwittear(tweetKanye);
-		assertEquals(2, u2.getTweets().size());
-		this.t.eliminarUsuario(u1);
+		// NO FUNCIONAN POR ERROR: 
+		this.t.eliminarUsuario(u1); 
 		assertEquals(1, this.t.getUsuarios());
-		//assertNull(retweetKendrick);
-		//assertEquals(1, u2.getTweets().size());
+		assertEquals(1, u2.getTweets().size()); 
+		assertNull(retweetKendrick.getContenido());
 	}
 	
 	@Test

@@ -23,6 +23,16 @@ public class Twitter {
 		return this.usuarios.stream().anyMatch(x -> x.getScreenName().equals(screenName));
 	}
 	
+	private List<Retweet> todosRetweets() {
+		List<Publicacion> todas = this.usuarios.stream().flatMap(x -> x.getTweets().stream()).collect(Collectors.toList()); // me quedo con todas las publicaciones de todos los usuarios
+		return todas.stream().filter(x -> x.esRetweet()).map(p -> (Retweet) p).collect(Collectors.toList()); // filtro y devuelvo solo los retweets
+	}
+
+	public List<Usuario> getUsuarios() {
+		return this.usuarios;
+	}
+	
+	// NO FUNCIONAN POR ERROR:
 	public boolean eliminarUsuario(Usuario u) {
 		if ( ! existeUsuario(u.getScreenName()))
 			return false;
@@ -38,14 +48,5 @@ public class Twitter {
 			u.eliminarTweet(t); // elimino el tweet del usuario
 			origenBorrar.forEach(p -> this.eliminarTweet(p)); // borro todos los retweets del tweet a borrar
 		}
-	}
-	
-	private List<Retweet> todosRetweets() {
-		List<Publicacion> todas = this.usuarios.stream().flatMap(x -> x.getTweets().stream()).collect(Collectors.toList()); // me quedo con todas las publicaciones de todos los usuarios
-		return todas.stream().filter(x -> x.esRetweet()).map(p -> (Retweet) p).collect(Collectors.toList()); // filtro y devuelvo solo los retweets
-	}
-
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
 	}
 }
