@@ -12,12 +12,12 @@ public class EmpleadoTest {
 	
 	@BeforeEach
 	public void setUp() {
-		this.pas1 = new Pasante(false, 0, 0, 0, 3);
-		this.pas2 = new Pasante(false, 0, 0, 0, 36);
-		this.temp1 = new Temporario(false, 2, 24, 3);
-		this.temp2 = new Temporario(true, 4, 41, 12);
-		this.plan1 = new Planta(false, 4, 13, 9);
-		this.plan2 = new Planta(true, 1, 45, 6);
+		this.pas1 = new Pasante(3);
+		this.pas2 = new Pasante(36);
+		this.temp1 = new Temporario(false, 2, 24);
+		this.temp2 = new Temporario(true, 4, 41);
+		this.plan1 = new Planta(false, 4, 9);
+		this.plan2 = new Planta(true, 1, 6);
 	}
 	
 	@Test

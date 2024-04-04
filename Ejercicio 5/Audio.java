@@ -2,7 +2,7 @@ package ejercicio5;
 
 public class Audio extends Media {
 
-	public String play() {
-		return super.play() + "Audio";
+	public void play() {
+		System.out.println("Audio...");
 	}
 }

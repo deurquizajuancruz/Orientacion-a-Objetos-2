@@ -2,7 +2,7 @@ package ejercicio5;
 
 public class Media {
 
-	public String play() {
-		return "Playing...";
+	public void play() {
+		System.out.println("Playing...");
 	}
 }
