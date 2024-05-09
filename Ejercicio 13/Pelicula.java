@@ -15,10 +15,6 @@ public class Pelicula {
 		this.puntaje = puntaje;
 		this.similares = new ArrayList<Pelicula>();
 	}
-
-	public String toString() {
-		return "Titulo: " + this.titulo + ", año de estreno: " + this.anioEstreno + ", puntaje: " + this.puntaje;
-	}
 	
 	public double getPuntaje() {
 		return puntaje;

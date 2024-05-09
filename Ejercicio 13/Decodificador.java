@@ -2,7 +2,6 @@ package ejercicio13;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Decodificador {
 	private List<Pelicula> grilla, peliculasReproducidas;
@@ -26,13 +25,8 @@ public class Decodificador {
 		return grilla;
 	}
 
-	public String mostrarPeliculas() {
-		return this.grilla.stream().map(p -> p.toString()).collect(Collectors.joining("\n"));
-	}
-
-	public String sugerirPeliculas() {
-		return this.configuracion.enviarSugerencias(this).stream().map(p -> p.toString())
-				.collect(Collectors.joining("\n"));
+	public List<Pelicula> sugerirPeliculas() {
+		return this.configuracion.enviarSugerencias(this);
 	}
 
 	public void agregarPeliculaGrilla(Pelicula p) {
@@ -44,6 +38,6 @@ public class Decodificador {
 	}
 
 	public boolean fueReproducida(Pelicula p) {
-		return this.peliculasReproducidas.stream().anyMatch(pel -> pel.getTitulo().equals(p.getTitulo()));
+		return this.peliculasReproducidas.stream().anyMatch(pel -> pel == p);
 	}
 }

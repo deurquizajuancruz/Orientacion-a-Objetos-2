@@ -4,10 +4,10 @@ public class Provisoria extends State {
 
 	public void inscribir(Excursion e, Usuario unUsuario) {
 		e.getInscriptos().add(unUsuario);
+		if (e.cantidadInscriptos() == e.getCupoMax()) // por si cupoMax = cupoMin
+			e.setEstado(new Completa());
 		if (e.cantidadInscriptos() == e.getCupoMin())
 			e.setEstado(new Definitiva());
-		if (e.cantidadInscriptos() == e.getCupoMax())
-			e.setEstado(new Completa());
 	}
 
 	public String obtenerInformacion(Excursion e) {
