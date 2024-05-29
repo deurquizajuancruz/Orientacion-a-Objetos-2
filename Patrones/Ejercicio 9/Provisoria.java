@@ -12,7 +12,7 @@ public class Provisoria extends State {
 
 	public String obtenerInformacion(Excursion e) {
 		return super.obtenerInformacion(e) + "\nCantidad de usuarios faltantes para alcanzar el cupo minimo: "
-				+ (e.getCupoMin() - e.getInscriptos().size());
+				+ (e.getCupoMin() - e.cantidadInscriptos());
 	}
 
 }
