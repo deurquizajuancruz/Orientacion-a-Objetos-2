@@ -1,28 +1,33 @@
 package ejercicio17;
 
 public class Silver extends Membresia {
-	private static double TASA = 0.05;
-	private static int DIAS = 35;
-	private static int PARKING = 72;
+
+	public Silver() {
+		this.tasa = 0.05;
+		this.dias = 35;
+		this.parking = 72;
+	}
 
 	public ProductoCombinado crearProducto3() {
-		throw new RuntimeException("Este tipo de membresía no incluye este producto");
+		throw new RuntimeException("Este tipo de membresía no incluye este producto.");
 	}
 
 	public ProductoCombinado crearProducto4() {
-		throw new RuntimeException("Este tipo de membresía no incluye este producto");
+		throw new RuntimeException("Este tipo de membresía no incluye este producto.");
 	}
 
-	public double getTasa() {
-		return TASA;
+	public void setDias(int nuevosDias) {
+		if (nuevosDias >= 35)
+			this.dias = nuevosDias;
+		else
+			throw new RuntimeException("El valor debe ser de mínimo 35 días.");
 	}
 
-	public int getParking() {
-		return PARKING;
-	}
-
-	public int getDias() {
-		return DIAS;
+	public void setParking(int nuevoParking) {
+		if (nuevoParking >= 72)
+			this.parking = nuevoParking;
+		else
+			throw new RuntimeException("El valor debe ser de mínimo 72 horas.");
 	}
 
 }

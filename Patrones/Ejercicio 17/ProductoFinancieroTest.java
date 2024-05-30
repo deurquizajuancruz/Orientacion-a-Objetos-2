@@ -45,9 +45,15 @@ public class ProductoFinancieroTest {
 		assertEquals(3, this.golden.crearProducto4().getProductos().size());
 		assertEquals(3, this.golden.crearProducto3().getProductos().size());
 		Exception exc = assertThrows(RuntimeException.class, () -> this.silver.crearProducto3());
-		assertEquals("Este tipo de membresía no incluye este producto", exc.getMessage());
+		assertEquals("Este tipo de membresía no incluye este producto.", exc.getMessage());
+		exc = assertThrows(RuntimeException.class, () -> this.silver.setDias(10));
+		assertEquals("El valor debe ser de mínimo 35 días.", exc.getMessage());
+		exc = assertThrows(RuntimeException.class, () -> this.golden.setParking(10));
+		assertEquals("El valor debe ser de mínimo 24 horas.", exc.getMessage());
+		this.silver.setDias(40);
+		assertEquals(432964.28, this.silver.crearProducto1().retornoInversion(350));
 	}
-	
+
 	@Test
 	public void testRetornoInversionCombinado() {
 		assertEquals(308879.2, this.silver.crearProducto1().retornoInversion(250));
