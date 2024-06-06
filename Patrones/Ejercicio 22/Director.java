@@ -7,12 +7,13 @@ public class Director {
 		this.builder = builder;
 	}
 
-	public void construirSanguche() {
+	public Sanguche construirSanguche() {
 		this.builder.nuevoSanguche();
 		this.builder.ponerPan();
 		this.builder.ponerAderezo();
 		this.builder.ponerPrincipal();
 		this.builder.ponerAdicional();
+		return this.builder.devolverSanguche();
 	}
 
 	public void setBuilder(Builder builder) {

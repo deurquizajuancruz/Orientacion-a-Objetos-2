@@ -23,8 +23,7 @@ public class SangucheTest {
 	@Test
 	public void testSinTACC() {
 		this.director = new Director(this.sinTacc);
-		this.director.construirSanguche();
-		Sanguche sangucheSinTacc = this.sinTacc.devolverSanguche();
+		Sanguche sangucheSinTacc = this.director.construirSanguche();
 		assertNotNull(sangucheSinTacc);
 		assertEquals(4, sangucheSinTacc.getIngredientes().size());
 		assertEquals(618, sangucheSinTacc.calcularCosto());
@@ -33,8 +32,7 @@ public class SangucheTest {
 	@Test
 	public void testClasico() {
 		this.director = new Director(this.clasico);
-		this.director.construirSanguche();
-		Sanguche sangucheClasico = this.clasico.devolverSanguche();
+		Sanguche sangucheClasico = this.director.construirSanguche();
 		assertNotNull(sangucheClasico);
 		assertEquals(4, sangucheClasico.getIngredientes().size());
 		assertEquals(500, sangucheClasico.calcularCosto());
@@ -43,8 +41,7 @@ public class SangucheTest {
 	@Test
 	public void testVegetariano() {
 		this.director = new Director(this.vegetariano);
-		this.director.construirSanguche();
-		Sanguche sangucheVegetariano = this.vegetariano.devolverSanguche();
+		Sanguche sangucheVegetariano = this.director.construirSanguche();
 		assertNotNull(sangucheVegetariano);
 		assertEquals(3, sangucheVegetariano.getIngredientes().size());
 		assertEquals(420, sangucheVegetariano.calcularCosto());
@@ -53,8 +50,7 @@ public class SangucheTest {
 	@Test
 	public void testVegano() {
 		this.director = new Director(this.vegano);
-		this.director.construirSanguche();
-		Sanguche sangucheVegano = this.vegano.devolverSanguche();
+		Sanguche sangucheVegano = this.director.construirSanguche();
 		assertNotNull(sangucheVegano);
 		assertEquals(3, sangucheVegano.getIngredientes().size());
 		assertEquals(620, sangucheVegano.calcularCosto());
